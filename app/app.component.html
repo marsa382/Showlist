@@ -1,0 +1,12 @@
+<div>
+    <form class="show-form" ng-submit="searchShows()">
+        <input placeholder="Search tv shows" #showquery (keyup.enter)="searchShows(showquery.value)" autofocus>
+    </form>
+    <ul *ngFor="let x of searched">
+        <li (click)="saveShow(x);">{{ x.show.name }}</li>
+    </ul>
+    <ul *ngFor="let x of savedShows">
+        <li>{{ x.show.name }}</li>
+    </ul>
+    
+</div>
