@@ -17,6 +17,8 @@ let AppComponent = class AppComponent {
         this.showstorage = showstorage;
         this.savedShows = [];
         this.showDropdown = false;
+        this.error = false;
+        this.showname = ""; //display on error message
         this.tvmService = tvmazeService;
         this.storage = showstorage;
         this.savedShows = showstorage.get();
@@ -28,9 +30,29 @@ let AppComponent = class AppComponent {
         });
     }
     saveShow(show) {
-        this.showDropdown = false;
-        this.savedShows.push(show);
-        this.storage.put(this.savedShows);
+        if (!this.contains(show)) {
+            this.showDropdown = false;
+            this.savedShows.push(show);
+            this.storage.save(this.savedShows);
+        }
+        else {
+            this.showDropdown = false;
+            this.error = true;
+            this.showname = show.show.name;
+        }
+    }
+    deleteShow(index) {
+        this.savedShows.splice(index, 1);
+        this.storage.save(this.savedShows);
+    }
+    contains(obj) {
+        var i = this.savedShows.length;
+        while (i--) {
+            if (this.savedShows[i].show.id === obj.show.id) {
+                return true;
+            }
+        }
+        return false;
     }
 };
 AppComponent = __decorate([

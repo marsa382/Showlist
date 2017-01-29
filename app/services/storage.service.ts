@@ -9,7 +9,7 @@ export class StorageService {
         return JSON.parse(localStorage.getItem(this.storageid) || '[]');
     }
 
-    put(savedshows:any) {
+    save(savedshows:any) {
         localStorage.setItem(this.storageid, JSON.stringify(savedshows));
     }
 }

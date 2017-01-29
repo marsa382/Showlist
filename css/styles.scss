@@ -1,12 +1,6 @@
 @import "customVariables";
 @import "../assets/stylesheets/bootstrap";
 
-$c : red;
-
-li {
-    color: $c;
-}
-
 .search {
     position: absolute;
 }
@@ -24,7 +18,7 @@ input {
     box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.3);
 }
 
-.drop .item {
+.item {
     float: left;
     width: 100%;
     border-bottom: 1px solid #CCC;
@@ -33,12 +27,20 @@ input {
     overflow: hidden;
 }
 
+.item:hover{
+   background-color: $lightPurple;
+}
+
 .divider {
     height: 50px;
     width: 100%;
     float: left;
-    background-color: #34495E;
+    background-color: $darkPurple;
     color: #FFF;
     margin: 10px 0px 10px 0px;
     padding-left: 10px;
+}
+
+td:first-child {
+    width: 90px;
 }

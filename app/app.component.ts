@@ -15,6 +15,8 @@ export class AppComponent  {
     tvmService:TVMazeService;
     storage:StorageService;
     showDropdown = false;
+    error = false;
+    showname = ""; //display on error message
 
     constructor(
     private tvmazeService: TVMazeService,
@@ -34,9 +36,32 @@ export class AppComponent  {
     }
 
     saveShow(show:any){
-        this.showDropdown = false;
-        this.savedShows.push(show);
-        this.storage.put(this.savedShows);
+
+        if (!this.contains(show)) {
+            this.showDropdown = false;
+            this.savedShows.push(show);
+            this.storage.save(this.savedShows);
+        } else {
+            this.showDropdown = false;
+            this.error = true;
+            this.showname = show.show.name;
+        }
+        
     }
+
+    deleteShow(index:number) {
+        this.savedShows.splice(index, 1);
+        this.storage.save(this.savedShows);
+    }
+
+    contains(obj:any) {
+    var i = this.savedShows.length;
+    while (i--) {
+       if (this.savedShows[i].show.id === obj.show.id) {
+           return true;
+       }
+    }
+    return false;
+}
     
 }

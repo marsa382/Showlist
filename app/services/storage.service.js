@@ -13,7 +13,7 @@ let StorageService = class StorageService {
     get() {
         return JSON.parse(localStorage.getItem(this.storageid) || '[]');
     }
-    put(savedshows) {
+    save(savedshows) {
         localStorage.setItem(this.storageid, JSON.stringify(savedshows));
     }
 };
