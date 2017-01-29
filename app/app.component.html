@@ -1,12 +1,38 @@
-<div>
-    <form class="show-form" ng-submit="searchShows()">
-        <input placeholder="Search tv shows" #showquery (keyup.enter)="searchShows(showquery.value)" autofocus>
-    </form>
-    <ul *ngFor="let x of searched">
-        <li (click)="saveShow(x);">{{ x.show.name }}</li>
-    </ul>
-    <ul *ngFor="let x of savedShows">
-        <li>{{ x.show.name }}</li>
-    </ul>
-    
+<div class="container">
+    <div class="row">
+        <div class="input-group input-group-lg ">
+            <form class="show-form" ng-submit="searchShows()">
+                <div class="input-group input-group-lg">
+                    <input type="text" class="form-control" placeholder="Search tv shows" #showquery (keyup.enter)="searchShows(showquery.value)" (keyup.backspace)="showDropdown = false;" aria-describedby="sizing-addon1">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" (click)="searchShows(showquery.value)"><span class="glyphicon glyphicon-search"></span></button>
+                    </span>
+                </div>
+            </form>
+            <div [hidden]="!showDropdown" class="drop">
+                <div *ngFor="let x of searched" (click)="saveShow(x); showquery.value='';" class="item"><span class="glyphicon glyphicon-plus"></span> {{ x.show.name }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="divider"><h3>Saved</h3></div>
+    </div>
+    <div class="row">
+        <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let x of savedShows">
+            <td>{{ x.show.name }}</td>
+            <td>{{ x.show.name }}</td>
+            <td><span class="glyphicon glyphicon-remove"></span></td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
 </div>

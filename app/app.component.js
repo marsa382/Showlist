@@ -16,16 +16,19 @@ let AppComponent = class AppComponent {
         this.tvmazeService = tvmazeService;
         this.showstorage = showstorage;
         this.savedShows = [];
+        this.showDropdown = false;
         this.tvmService = tvmazeService;
         this.storage = showstorage;
         this.savedShows = showstorage.get();
     }
     searchShows(param) {
+        this.showDropdown = true;
         this.tvmazeService.searchShows(param).subscribe((json) => {
             this.searched = json;
         });
     }
     saveShow(show) {
+        this.showDropdown = false;
         this.savedShows.push(show);
         this.storage.put(this.savedShows);
     }
