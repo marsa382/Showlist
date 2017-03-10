@@ -10,12 +10,14 @@ const platform_browser_1 = require("@angular/platform-browser");
 const http_1 = require("@angular/http");
 const forms_1 = require("@angular/forms");
 const app_component_1 = require("./app.component");
+const app_showlist_1 = require("./app.showlist");
+const genrefilter_pipe_1 = require("./genrefilter.pipe");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, http_1.HttpModule, http_1.JsonpModule, forms_1.FormsModule],
-        declarations: [app_component_1.AppComponent],
+        declarations: [app_component_1.AppComponent, app_showlist_1.ShowListComponent, genrefilter_pipe_1.GenreFilterPipe],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

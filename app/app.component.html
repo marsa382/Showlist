@@ -18,34 +18,5 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="divider"><h3>Saved</h3></div>
-    </div>
-    <div class="row">
-        <table class="table table-striped">
-        <thead>
-        <tr>
-            <th></th>
-            <th>Name</th>
-            <th>Genre</th>
-            <th>Premiered</th>
-            <th>Rating</th>
-            <th>TVMaze page</th>
-            <th>Delete</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let x of savedShows; let i = index;">
-            <td><a href="#"><img src="{{ x.show.image.medium }}" width="80px;"></a></td>
-            <td>{{ x.show.name }}</td>
-            <td>{{ x.show.genres }}</td>
-            <td>{{ x.show.premiered | date:'dd.MM.yyyy' }}</td>
-            <td>{{ x.show.rating.average }}</td>
-            <td> <a href="{{ x.show.url }}" target="_blank"><span class="glyphicon glyphicon-chevron-right"></span></a> </td>
-            <td><span class="glyphicon glyphicon-remove" (click)="deleteShow(i)"></span></td>
-        </tr>
-        </tbody>
-    </table>
-    <div [hidden]="savedShows.length">Search tv-shows and add them to list.</div>
-    </div>
+    <showlist [allSaved]="savedShows" [storage]='storage' (notify)='deleteShow($event)'></showlist>
 </div>

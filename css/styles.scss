@@ -18,6 +18,38 @@ input {
     box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.3);
 }
 
+.filter {
+	background-color: #f2f2f2;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #e6e6e6;
+	width: 23%;
+	margin: 5px 5px 5px 5px;
+	padding-top : 5px;
+	padding-bottom: 5px;
+	padding-left: 3px;
+	padding-right: 3px;
+	border-radius: 2px;
+	border-radius: 4px;
+}
+
+.genrewrapper {
+	float: right;
+	margin-right: 15px;
+    font-weight: bold;
+}
+
+.close {
+	float: right;
+	width: 20px;
+	height: 20px;
+	opacity: 0.5;
+}
+
+.glyphicon {
+    top: 0px;
+}
+
 .item {
     float: left;
     width: 100%;

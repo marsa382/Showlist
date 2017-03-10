@@ -36,7 +36,6 @@ export class AppComponent  {
     }
 
     saveShow(show:any){
-
         if (!this.contains(show)) {
             this.showDropdown = false;
             this.savedShows.push(show);
@@ -55,13 +54,13 @@ export class AppComponent  {
     }
 
     contains(obj:any) {
-    var i = this.savedShows.length;
-    while (i--) {
-       if (this.savedShows[i].show.id === obj.show.id) {
-           return true;
-       }
+        var i = this.savedShows.length;
+        while (i--) {
+            if (this.savedShows[i].show.id === obj.show.id) {
+                return true;
+            }
+        }
+        return false;
     }
-    return false;
-}
     
 }
